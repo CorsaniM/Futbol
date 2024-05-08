@@ -1,40 +1,45 @@
-import { z } from "zod";
+"use server"
 
-import {
-  createTRPCRouter,
-  protectedProcedure,
-  publicProcedure,
-} from "app/server/api/trpc";
-import { posts } from "app/server/db/schema";
 
-export const postRouter = createTRPCRouter({
-  hello: publicProcedure
-    .input(z.object({ text: z.string() }))
-    .query(({ input }) => {
-      return {
-        greeting: `Hello ${input.text}`,
-      };
-    }),
+import { and, eq, gt, like, or } from "drizzle-orm";
+import { db } from "../../db";
+import { usuario } from "../../db/schema";
 
-  create: protectedProcedure
-    .input(z.object({ name: z.string().min(1) }))
-    .mutation(async ({ ctx, input }) => {
-      // simulate a slow db call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      await ctx.db.insert(posts).values({
-        name: input.name,
-        createdById: ctx.session.user.id,
-      });
-    }),
 
-  getLatest: publicProcedure.query(({ ctx }) => {
-    return ctx.db.query.posts.findFirst({
-      orderBy: (posts, { desc }) => [desc(posts.createdAt)],
-    });
-  }),
+import { redirect } from "next/navigation";
 
-  getSecretMessage: protectedProcedure.query(() => {
-    return "you can now see this secret message!";
-  }),
-});
+
+
+
+
+
+export async function LoginUser(mail: string, pass: string) {
+
+    const userExist = await db.select().from(usuario).where(
+        and(
+            like(usuario.email, mail),
+            like(usuario.contraseña, pass)
+        )
+    );
+
+    if(Array.isArray(userExist) && userExist.length === 0)
+        {
+            return { success: true, message: "Inicio de sesión exitoso" };
+        }
+        else{
+        console.log("Bien Bien")
+        redirect("/register?returnTo")
+    }
+};
+
+export async function PostUser (name: string, mail: string,pass: string) {
+    
+    console.log(name, mail, pass)
+    
+        await db.insert(usuario).values({
+            name: name,
+            email: mail,
+            contraseña: pass,
+        });
+    }
