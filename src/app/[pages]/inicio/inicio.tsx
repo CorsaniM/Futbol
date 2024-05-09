@@ -25,7 +25,7 @@ export default function Inicio() {
 {/* <div className="py-3 pl-7 pr-3 flex flex-col lg:flex-row lg:justify-between"><div>
     <div className="Flex-sc-kiay30-0 indexstyled__InputContainer-sc-c207f5-3 hnpNvK">
         <svg width="26" height="25" viewBox="0 0 30 29" fill="none"><path d="M14.81 15.708a3.625 3.625 0 100-7.25 3.625 3.625 0 000 7.25z" stroke="#00B04B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14.81 2.417a9.667 9.667 0 00-9.666 9.666c0 2.287.485 3.782 1.812 5.438l7.854 9.062 7.854-9.062c1.327-1.656 1.813-3.152 1.813-5.438a9.667 9.667 0 00-9.667-9.666v0z" stroke="#00B04B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            </path>
+            </path>ttttttttttttt
             </svg>
             <input placeholder="Buscar Ciudad" type="text" className="indexstyled__StyledInput-sc-c207f5-2 hjsWwV" value=""/>
                 </div>
