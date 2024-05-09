@@ -34,7 +34,7 @@ export default function Navbar() {
 
     <nav className="flex justify-between h-20 items-center bg-green-400 text-black px-24 py-3">
       <Link href="/">
-        <h1 className="text-4xl font-bold bg-transparent">Señores del Futbol©</h1>
+        <h1 className="text-4xl font-bold bg-transparent">Alquila tu cancha©</h1>
       </Link>
       <ul className="flex gap-x-2 text-2xl">
         <li className="mr-5 bg-white rounded-2xl p-2">
