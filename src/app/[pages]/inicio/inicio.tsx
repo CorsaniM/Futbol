@@ -6,16 +6,18 @@ export default function Inicio() {
 
     return(
         <div>
-            <div>
+            <main className="flex min-h-screen bg-white">
+            <div className=" mt-20 ml-20 h-40">
                 <h1>Queres subir tu complejo deportivo? <Link href="/registroalquiler" className="text-green-400">Ingresa aca</Link></h1>
             </div>
-            <main className="flex min-h-screen flex-col items-center justify-center bg-white">
-                <div>
-                    <h1>Alquilar una cancha</h1>
+            <div className="flex items-center flex-col justify-center ">
+                <div className="bg-slate-200 rounded-lg p-5">
+                <Link href="/alquiler" className="text-green-400">Alquilar una cancha</Link>
+                    <h1></h1>
                 </div>
                 <div className="bg-slate-200 rounded-lg">
-                    <input></input>
                 </div>
+            </div>
             </main>
         </div>
     )
