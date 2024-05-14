@@ -1,51 +1,64 @@
+"use client";
 
 import Link from "next/link";
 import React from "react";
-import { SessionProvider } from "next-auth/react"
 
+import { useUser } from '@auth0/nextjs-auth0/client';
+import { Image } from "lucide-react";
 
 
 export default function Navbar() {
   
+  const { user, error, isLoading } = useUser();
 
-//   if(error) return <div>{error.message}</div>
 
-//   console.log(user?.name, user?.email)
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
 
-//   if(user){
-//   return (
-//     <nav className="flex justify-between h-20 items-center bg-green-400 text-black px-24 py-3">
-//       <Link href="/">
-//         <h1 className="text-4xl font-bold bg-transparent">Señores del Futbol©</h1>
-//       </Link>
-//       <ul className="flex gap-x-2 text-2xl">
-//         <li>
-//           <Link href="/api/auth/logout">
-//             Cerrar sesión
-//           </Link>
-//         </li>
-//       </ul>
-//     </nav>
-//   );
-// }
 
   return (
+    
 
-
-    <nav className="flex justify-between h-20 items-center bg-green-400 text-black px-24 py-3">
+      <nav className="flex justify-between h-20 items-center bg-green-400 text-black px-24 py-3">
       <Link href="/">
         <h1 className="text-4xl font-bold bg-transparent">Señores del Futbol©</h1>
       </Link>
       <ul className="flex gap-x-2 text-2xl">
-        <li className="mr-5 bg-white rounded-2xl p-2">
-        <Link href="/api/auth/login">
-            Iniciar sesion
-          </Link>
-        </li>
+
+
+        {user ? (
+  <div>
+    {user.picture ? (
+      <div className="flex">
+        <div className="mt-5">
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+        </div>
+
+        <div className="m-5 bg-slate-200 rounded-lg p-2 ">
+          <Link href="api/auth/logout">Cerrar sesión</Link>
+        </div>
+        <div className="pr-10">
+          <img src={user.picture} className="rounded-2xl"/>
+        </div>
+  </div>
+) : (
+  <p>No hay imagen de usuario disponible</p>
+)}
+    
+  </div>
+) : (
+  <li className="mr-5 bg-white rounded-2xl p-2"> 
+  <Link href="/api/auth/login">
+    Iniciar sesión
+  </Link>
+  </li>
+)}   
       </ul>
     </nav>
 
-  );
+
+);
 
 }
 

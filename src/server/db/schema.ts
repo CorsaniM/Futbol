@@ -1,4 +1,5 @@
 import { relations, sql } from "drizzle-orm";
+import { date } from "drizzle-orm/pg-core";
 import {
   index,
   int,
@@ -16,6 +17,21 @@ import { type AdapterAccount } from "next-auth/adapters";
  */
 export const createTable = sqliteTableCreator((name) => `futbol_${name}`);
 
+
+export const users = createTable(
+  "user",
+  {
+    id: text("id").primaryKey(),
+    email: text("email", { length: 256 }).unique().notNull(),
+    name: text("name", { length: 256 }),
+    picture: text("picture"),
+    dueno: int("dueno", { mode: "boolean" }).default(false),
+  },
+  (example) => ({
+    emailIndex: index("user_email_idx").on(example.email),
+  })
+);
+
 export const usuario = createTable(
   "usuario",
   {
@@ -26,6 +42,8 @@ export const usuario = createTable(
     documento: text("documento"),
     picture: text("picture"),
     contraseña: text("contraseña"),
+    ubicacionPreferida: text('ubicacionPreferida'),
+    esDueno: text('esDueno')
   },
 );
 
@@ -33,27 +51,39 @@ export const cancha = createTable(
   "cancha",
   {
     id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
-    razon_Social: text("razonSocial", { length: 256 }),
+    razon_Social: text("razonSocial"),
     email: text("email"),
     domicilio: text("domicilio"),
     localidad: text("localidad"),
-    tamaños: text(""),
-    Estado: int("Estado").notNull(),
+    tamanos: text("tamanos"),
+    Estado: int("Estado"),
     telefono: text("telefono"),
     picture: text("picture"),
-    createdAt: int("created_at", { mode: "timestamp" })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: int("updatedAt", { mode: "timestamp" }),
   },
 );
 export const transaccion = createTable(
   "transaccion",
   {
     id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
-    usuarioid: int("banco").references(() => usuario.id),
-    canchaid: int("cheque").references(() => cancha.id),
+    usuarioid: int("usuarioId").references(() => usuario.id).notNull(),
+    canchaid: int("canchaId").references(() => cancha.id).notNull(),
+    deporteId: int("deporteId").references(() => deporte.id).notNull(),
+    horario: int("horario", { mode: "timestamp" })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
     descripcion: text("descripcion"),
     monto: int("monto").notNull(),
+    estado: int('estado'),
+
   },
+);
+
+  export const deporte = createTable(
+    "deporte",
+    {
+      id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
+      name: text("name"),
+      tipo: int("tipo"),
+  
+    },
 );

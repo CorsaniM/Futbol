@@ -7,12 +7,13 @@
  * need to use are documented accordingly near the end.
  */
 
-import { initTRPC, TRPCError } from "@trpc/server";
+import { TRPCError, initTRPC } from "@trpc/server";
+import { getServerAuthSession } from "../auth"; 
+import { eq } from "drizzle-orm";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { getServerAuthSession } from "app/server/auth";
-import { db } from "app/server/db";
+import { db, schema } from "app/server/db";
 
 /**
  * 1. CONTEXT
@@ -27,11 +28,8 @@ import { db } from "app/server/db";
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
-  const session = await getServerAuthSession();
-
   return {
     db,
-    session,
     ...opts,
   };
 };
@@ -95,14 +93,50 @@ export const publicProcedure = t.procedure;
  *
  * @see https://trpc.io/docs/procedures
  */
-export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
-  if (!ctx.session || !ctx.session.user) {
+export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
+
+  const session = await getServerAuthSession();
+
+  if (!session) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+  const user = await ctx.db.query.users.findFirst({
+    where: eq(schema.users.id, session.user.id),
+    columns: {
+      dueno: true,
+    },
+  });
+
+  if (!user) {
+    await ctx.db
+      .insert(schema.users)
+      .values({
+        id: session.user.id,
+        email: session.user.email,
+        name: session.user.name,
+        picture: session.user.picture,
+        
+      })
+      .onConflictDoNothing();
   }
   return next({
     ctx: {
-      // infers the `session` as non-nullable
-      session: { ...ctx.session, user: ctx.session.user },
+      session,
+      ...ctx,
+      isDueno: user?.dueno ?? false,
     },
   });
 });
+
+export const duenoProcedure = protectedProcedure.use(async ({ ctx, next }) => {
+  if (!ctx.isDueno) {
+    throw new TRPCError({
+      code: "FORBIDDEN",
+    });
+  }
+
+  return next({
+    ctx,
+  });
+});
+

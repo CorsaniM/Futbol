@@ -3,7 +3,8 @@ import "app/styles/globals.css";
 import { Inter } from "next/font/google";
 
 import { TRPCReactProvider } from "app/trpc/react";
-
+import AuthProviderSSR from "./_components/auth-provider/auth-provider-ssr";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -22,9 +23,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
-      </body>
+      <UserProvider>
+        <body className={`font-sans ${inter.variable}`}>
+          <TRPCReactProvider>{children}</TRPCReactProvider>
+        </body>
+      </UserProvider>
     </html>
   );
 }

@@ -11,9 +11,12 @@ export const transaccionRouter = createTRPCRouter({
     .input(
       z.object({
         usuarioid: z.number(),
-        transaccionid: z.number(),
+        canchaid: z.number(),
+        deporteId: z.number(),
         descripcion: z.string(),
         monto: z.number(),
+        horario: z.date(),
+        estado: z.number(),
     })
     )
     .mutation(async ({ ctx, input }) => {
@@ -32,9 +35,12 @@ export const transaccionRouter = createTRPCRouter({
       z.object({
         id: z.number(),
         usuarioid: z.number(),
-        transaccionid: z.number(),
+        canchaid: z.number(),
+        deporteId: z.number(),
         descripcion: z.string(),
         monto: z.number(),
+        horario: z.date(),
+        estado: z.number(),
       })
     )
     .mutation(async ({ ctx, input }) => {
