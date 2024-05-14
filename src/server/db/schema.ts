@@ -87,3 +87,5 @@ export const transaccion = createTable(
   
     },
 );
+
+

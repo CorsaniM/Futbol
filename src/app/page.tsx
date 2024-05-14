@@ -13,6 +13,7 @@ export default function Home() {
         </div>
           <Inicio/>
           <h1>HOLA</h1>
+          
       </div>
     </div>
   );

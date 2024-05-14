@@ -5,6 +5,9 @@ import React from "react";
 
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { Image } from "lucide-react";
+import { Avatar,
+  AvatarFallback,
+  AvatarImage, } from "../ui/avatar"; 
 
 
 export default function Navbar() {
@@ -28,7 +31,13 @@ export default function Navbar() {
 
         {user ? (
   <div>
-    {user.picture ? (
+      <Avatar>
+        <AvatarImage src={user.picture || ""} alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+     </Avatar>
+    {
+    user.picture
+     ? (
       <div className="flex">
         <div className="mt-5">
           <h2>{user.name}</h2>

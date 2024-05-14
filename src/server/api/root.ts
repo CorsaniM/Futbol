@@ -5,6 +5,7 @@ import { canchaRouter } from "./routers/cancha";
 import { transaccionRouter } from "./routers/transaccion";
 import { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
 import { usersRouter } from "./routers/user";
+import { deporteRouter } from "./routers/deporte";
 
 /**
  * This is the primary router for your server.
@@ -16,6 +17,7 @@ export const appRouter = createTRPCRouter({
   cancha: canchaRouter,
   transaccion: transaccionRouter,
   users: usersRouter,
+  deporte: deporteRouter,
 });
 
 // export type definition of API

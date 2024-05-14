@@ -26,10 +26,12 @@ export default function Alquilar() {
     const refresh = api.useUtils().cancha.list.invalidate
 
     const [deporte, setDeporte] = useState('')
+
     const [Ubicacion, setUbicacion] = useState('')
     const [horario, setHorario] = React.useState<Date>()
     const [monto, setMonto] = useState<number>(0)
     const [seña, setSeña] = useState('')
+    
     
     
 
@@ -85,7 +87,8 @@ export default function Alquilar() {
                     </li>
                 <div>
 
-                {!isPending && <button onClick={() => createPost({
+                {!isPending && 
+                <button onClick={() => createPost({
             usuarioid: 1,
             canchaid: 1,
             deporteId: 1,
