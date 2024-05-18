@@ -31,10 +31,7 @@ export default function Navbar() {
 
         {user ? (
   <div>
-      <Avatar>
-        <AvatarImage src={user.picture || ""} alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-     </Avatar>
+      
     {
     user.picture
      ? (
@@ -43,7 +40,10 @@ export default function Navbar() {
           <h2>{user.name}</h2>
           <p>{user.email}</p>
         </div>
-
+        <Avatar>
+        <AvatarImage src={user.picture || ""} alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+     </Avatar>
         <div className="m-5 bg-slate-200 rounded-lg p-2 ">
           <Link href="api/auth/logout">Cerrar sesión</Link>
         </div>
