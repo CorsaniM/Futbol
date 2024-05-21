@@ -99,11 +99,12 @@ export default function Alquilar() {
 
                 }).then(refresh)}>Alquilar Cancha</button>}
                 {isPending && (
-                    <button disabled={true}>
+                    <Button disabled={true}>
                     <Loader2Icon className='mr-2 animate-spin' /> Creating post
-                </button>
+                </Button>
             )}
             </div>
+
             </div>
         </div>
     </div>

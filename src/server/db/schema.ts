@@ -61,6 +61,7 @@ export const cancha = createTable(
     picture: text("picture"),
   },
 );
+
 export const transaccion = createTable(
   "transaccion",
   {
