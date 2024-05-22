@@ -1,9 +1,12 @@
+"use client"
 import Navbar from "app/app/_components/Navbar";
+import { Button } from "app/app/_components/ui/button";
+import { Route } from "lucide-react";
 import Link from "next/link";
-
+import { useState } from "react";
 
 export default function Inicio() {
-
+const [numero, setnumero] = useState <number> (0)
     return(
         <div>
             <main className="flex min-h-screen bg-white">
@@ -19,6 +22,13 @@ export default function Inicio() {
                 </div>
                 <div className="bg-slate-200 rounded-lg">
                 </div>
+            </div>
+            <div>
+                <Button onClick={(e) => setnumero (numero + 1)}>lista de deportes</Button>
+                <h1>{numero}</h1>
+            </div>
+            <div>
+                <Link href="http://localhost:3000/deportes">lista de deportes</Link>
             </div>
             </main>
         </div>

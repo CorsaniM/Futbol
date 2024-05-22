@@ -31,7 +31,7 @@ export default function Deportes() {
 
     const [tipo, setTipo] = useState<number>(0)
 
-    
+    const sports = ["futbol, ", "basquet, ", "handball, ","hockey, ","voley, ","tenis."]
 
 
 
@@ -66,6 +66,10 @@ export default function Deportes() {
                     <Loader2Icon className='mr-2 animate-spin' /> Creating post
                 </button>
             )}
+                
+                </div>
+                <div>
+                    <h1>{sports}</h1>
                 </div>
                 </div>
                 </div>
