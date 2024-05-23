@@ -104,9 +104,10 @@ export default function Alquilar() {
                 {isLoading && (
                     <button disabled={true}>
                     <Loader2Icon className='mr-2 animate-spin' /> Creating post
-                </button>
+                </Button>
             )}
             </div>
+
             </div>
         </div>
     </div>
