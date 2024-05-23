@@ -15,9 +15,6 @@ export default function Alquiler () {
     return(
         <div>
         <div>
-        <Navbar/>
-        </div>
-        <div>
         <Alquilar/>
 
         </div>

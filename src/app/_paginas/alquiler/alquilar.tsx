@@ -8,20 +8,23 @@ import { Loader2Icon } from 'lucide-react'
 import { CalendarIcon } from "@radix-ui/react-icons"
 import { format } from "date-fns"
 import { cn } from "app/lib/utils";
-import { Button } from "../_components/ui/button";
-import { Calendar } from "../_components/ui/calendar"; 
+import { Button } from "../../_components/ui/button";
+import { Calendar } from "../../_components/ui/calendar"; 
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from "../_components/ui/popover"
+} from "../../_components/ui/popover"
 
 import React from "react";
-import { Input } from "../_components/ui/input";
+import { Input } from "../../_components/ui/input";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default function Alquilar() {
 
-    const { mutateAsync: createPost, isPending, error } = api.transaccion.create.useMutation()
+    const { mutateAsync: createPost, isLoading, error } = api.transaccion.create.useMutation()
+
+    const { user} = useUser();
 
     const refresh = api.useUtils().cancha.list.invalidate
 
@@ -87,9 +90,9 @@ export default function Alquilar() {
                     </li>
                 <div>
 
-                {!isPending && 
+                {!isLoading && 
                 <button onClick={() => createPost({
-            usuarioid: 1,
+            usuarioid: user?.name || "",
             canchaid: 1,
             deporteId: 1,
             descripcion: "todo gucci",
@@ -98,7 +101,7 @@ export default function Alquilar() {
             estado: 1,
 
                 }).then(refresh)}>Alquilar Cancha</button>}
-                {isPending && (
+                {isLoading && (
                     <button disabled={true}>
                     <Loader2Icon className='mr-2 animate-spin' /> Creating post
                 </button>

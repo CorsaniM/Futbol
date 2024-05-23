@@ -65,7 +65,7 @@ export const transaccion = createTable(
   "transaccion",
   {
     id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
-    usuarioid: int("usuarioId").references(() => usuario.id).notNull(),
+    usuarioid: text("usuarioId").notNull(),
     canchaid: int("canchaId").references(() => cancha.id).notNull(),
     deporteId: int("deporteId").references(() => deporte.id).notNull(),
     horario: int("horario", { mode: "timestamp" })
