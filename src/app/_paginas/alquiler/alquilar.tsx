@@ -91,7 +91,7 @@ export default function Alquilar() {
                 <div>
 
                 {!isLoading && 
-                <button onClick={() => createPost({
+                <Button onClick={() => createPost({
             usuarioid: user?.name || "",
             canchaid: 1,
             deporteId: 1,
@@ -100,9 +100,9 @@ export default function Alquilar() {
             horario: new Date(),
             estado: 1,
 
-                }).then(refresh)}>Alquilar Cancha</button>}
+                }).then(refresh)}>Alquilar Cancha</Button>}
                 {isLoading && (
-                    <button disabled={true}>
+                    <Button disabled={true}>
                     <Loader2Icon className='mr-2 animate-spin' /> Creating post
                 </Button>
             )}
