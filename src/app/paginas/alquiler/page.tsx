@@ -9,12 +9,8 @@ export default function Alquiler () {
     return(
         <div>
         <div>
-        <Navbar/>
-        </div>
-        <div>
-            <h1>hola</h1>
-  <Alquilar/>
-       
+        <Alquilar/>
+
         </div>
         
     </div>
