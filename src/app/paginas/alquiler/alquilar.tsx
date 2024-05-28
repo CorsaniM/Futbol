@@ -18,13 +18,10 @@ import {
 
 import React from "react";
 import { Input } from "../../_components/ui/input";
-import { getServerAuthSession } from "app/server/auth";
-
 
 export default function Alquilar() {
 
-
-    const { mutateAsync: createPost, isLoading, error } = api.transaccion.create.useMutation()
+    const { mutateAsync: createPost, isPending, error } = api.transaccion.create.useMutation()
 
     const refresh = api.useUtils().cancha.list.invalidate
 
@@ -90,9 +87,9 @@ export default function Alquilar() {
                     </li>
                 <div>
 
-                {!isLoading && 
+                {!isPending && 
                 <button onClick={() => createPost({
-            usuarioid: "w",
+            usuarioid: 1,
             canchaid: 1,
             deporteId: 1,
             descripcion: "todo gucci",
@@ -101,13 +98,13 @@ export default function Alquilar() {
             estado: 1,
 
                 }).then(refresh)}>Alquilar Cancha</button>}
-                {isLoading && (
-                    <Button disabled={true}>
+                {isPending && (
+                    <Button disabled={true} ref="/Futbol">
                     <Loader2Icon className='mr-2 animate-spin' /> Creating post
                 </Button>
             )}
-                <Button>
-                    Alquilar
+                <Button ref="/chef">
+                        La casa
                 </Button>
             </div>
             </div>

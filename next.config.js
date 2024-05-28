@@ -22,10 +22,6 @@ const config = {
                 source: '/registroalquiler',
                 destination: '/paginas/registroalquiler',
         },
-        {
-            source: '/perfil',
-            destination: '/paginas/perfil',
-    },
             // Añade más rutas aquí según lo necesites
         ];
     },

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { Image } from "lucide-react";
@@ -16,8 +16,6 @@ import { Avatar,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "../ui/dropdown-menu"
-import { Label } from "../ui/label";
-import { Checkbox } from "../ui/checkbox";
 
 export default function Navbar() {
   
@@ -27,12 +25,11 @@ export default function Navbar() {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
-const [open, setOpen] = useState<boolean>(true);
 
   return (
     
 
-      <nav className="flex justify-between h-28 items-center bg-green-400 text-black px-24 py-3">
+      <nav className="flex justify-between h-24 items-center bg-green-400 text-black px-24 py-3">
       <Link href="/">
         <h1 className="text-4xl font-bold bg-transparent">Alquila tu cancha©</h1>
       </Link>
@@ -40,63 +37,63 @@ const [open, setOpen] = useState<boolean>(true);
 
 
         {user ? (
-          <div className="flex">
-            <div>
-                    <div className="flex items-center mt-10 space-x-2">
-                    {open ? (
-                        <div>
-                          <Checkbox id="terms" onClick={() => setOpen(false)} />
-                          <Label htmlFor="terms">Sos dueño? (no)</Label>
-                        </div>
-                      ) : (
-                        <div>
-                          <Checkbox id="terms" onClick={() => setOpen(true)} />
-                          <Label htmlFor="terms">Sos dueño? (si)</Label>
-                        </div>
-                    )}
-                  </div>
-            </div>  
-            {
-            user.picture
-            ? (
-            <div className="mt-5">                     
-              <div className="flex">
-                <div className="p-2 w-24 rounded-lg">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger>
-                    <Avatar className="w-15 h-auto mt-1 ml-5">
-                        <AvatarImage src={user.picture || ""} alt="@shadcn" />
-                        <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <DropdownMenuLabel><Link href="/">Perfil</Link></DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem><Link href="/">Equipos</Link></DropdownMenuItem>
-                      <DropdownMenuItem><Link href="/">Mensajes</Link></DropdownMenuItem>
-                      <DropdownMenuItem ><Link href="api/auth/logout">Cerrar sesión</Link></DropdownMenuItem>
-                      <DropdownMenuItem disabled={open} ><Link href="/perfil">Tu complejo</Link></DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                  
-                </div>
-              </div>         
-            </div>
+  <div>
+      
+      
+    {
+    user.picture
+     ? (
+      <div>
+        <div className="mt-5">
+          <h2>{user.name}</h2>
+        </div>
+        <div className="flex">
+        <Avatar>
+        <AvatarImage src={user.picture || ""} alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+     </Avatar>
+        <div className="m-2 bg-slate-200 rounded-lg p-2 ">
+          <Link href="api/auth/logout">Cerrar sesión</Link>
+        </div>
+        </div>
+  </div>
+        <div className="flex mt-4 ml-10 pl-10">
+          <div className="p-2 h-12 w-24 bg-white rounded-lg">
+          <DropdownMenu>
+            <DropdownMenuTrigger>Cuenta</DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel><Link href="/">Perfil</Link></DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem><Link href="/">Equipos</Link></DropdownMenuItem>
+              <DropdownMenuItem><Link href="/">Mensajes</Link></DropdownMenuItem>
+              <DropdownMenuItem ><Link href="api/auth/logout">Cerrar sesión</Link></DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+            {/* <Link href="api/auth/logout">Cerrar sesión</Link> */}
+          </div>
+            <Avatar className="w-10 h-10 mt-1 ml-5">
+                <AvatarImage src={user.picture || ""} alt="@shadcn" />
+                <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          </div>
+      </div>
 
-              ) : (
-                <p>No hay imagen de usuario disponible</p>
-              )}
-                  
-                </div>
-              ) : (
-              <li className="mr-5 bg-white rounded-2xl p-2"> 
-              <Link href="/api/auth/login">
-                Iniciar sesión
-              </Link>
-              </li>
-            )}   
-        </ul>
+) : (
+  <p>No hay imagen de usuario disponible</p>
+)}
+    
+  </div>
+) : (
+  <li className="mr-5 bg-white rounded-2xl p-2"> 
+  <Link href="/api/auth/login">
+    Iniciar sesión
+  </Link>
+  </li>
+)}   
+      </ul>
     </nav>
+
+
 );
 
 }
