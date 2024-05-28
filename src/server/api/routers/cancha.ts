@@ -47,6 +47,7 @@ export const canchaRouter = createTRPCRouter({
         picture: z.string(),
         createdAt:z.date(),
         updatedAt: z.date(),
+        
       })
     )
     .mutation(async ({ ctx, input }) => {
