@@ -1,30 +1,15 @@
-await import('./src/env.js');
+/**
+ * Run build or dev with SKIP_ENV_VALIDATION to skip env validation. This is especially useful
+ * for Docker builds.
+ */
+/** @type {import("next").NextConfig} */
+
+  //CORREGIR CORREGIR CORREGIR TODO PENDIENTE ESTO NO MAL
+await import('./src/env.js')
+
 
 const config = {
-    experimental: { 
-        esmExternals: 'loose' 
-    },
-    async rewrites() {
-        return [
-            {
-                source: '/',
-                destination: '/paginas/',
-            },
-            {
-                source: '/alquiler',
-                destination: '/paginas/alquiler',
-            },
-            {
-                source: '/deportes',
-                destination: '/paginas/deportes',
-            },
-            {
-                source: '/registroalquiler',
-                destination: '/paginas/registroalquiler',
-        },
-            // Añade más rutas aquí según lo necesites
-        ];
-    },
+    experimental: { esmExternals: 'loose' },
+  
 };
-
-export default config;
+export default config

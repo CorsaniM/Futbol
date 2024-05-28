@@ -8,14 +8,7 @@ import { Image } from "lucide-react";
 import { Avatar,
   AvatarFallback,
   AvatarImage, } from "../ui/avatar"; 
-  import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-  } from "../ui/dropdown-menu"
+
 
 export default function Navbar() {
   
@@ -29,7 +22,11 @@ export default function Navbar() {
   return (
     
 
+<<<<<<< HEAD
       <nav className="flex justify-between h-24 items-center bg-green-400 text-black px-24 py-3">
+=======
+      <nav className="flex justify-between h-20 items-center bg-green-400 text-black px-24 py-3">
+>>>>>>> parent of cede6f9 (main)
       <Link href="/">
         <h1 className="text-4xl font-bold bg-transparent">Alquila tu cancha©</h1>
       </Link>
@@ -39,13 +36,19 @@ export default function Navbar() {
         {user ? (
   <div>
       
-      
     {
     user.picture
      ? (
+<<<<<<< HEAD
       <div>
         <div className="mt-5">
           <h2>{user.name}</h2>
+=======
+      <div className="flex">
+        <div className="mt-5">
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+>>>>>>> parent of cede6f9 (main)
         </div>
         <div className="flex">
         <Avatar>
@@ -57,27 +60,6 @@ export default function Navbar() {
         </div>
         </div>
   </div>
-        <div className="flex mt-4 ml-10 pl-10">
-          <div className="p-2 h-12 w-24 bg-white rounded-lg">
-          <DropdownMenu>
-            <DropdownMenuTrigger>Cuenta</DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuLabel><Link href="/">Perfil</Link></DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem><Link href="/">Equipos</Link></DropdownMenuItem>
-              <DropdownMenuItem><Link href="/">Mensajes</Link></DropdownMenuItem>
-              <DropdownMenuItem ><Link href="api/auth/logout">Cerrar sesión</Link></DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-            {/* <Link href="api/auth/logout">Cerrar sesión</Link> */}
-          </div>
-            <Avatar className="w-10 h-10 mt-1 ml-5">
-                <AvatarImage src={user.picture || ""} alt="@shadcn" />
-                <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-          </div>
-      </div>
-
 ) : (
   <p>No hay imagen de usuario disponible</p>
 )}
