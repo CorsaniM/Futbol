@@ -8,7 +8,14 @@ import { Image } from "lucide-react";
 import { Avatar,
   AvatarFallback,
   AvatarImage, } from "../ui/avatar"; 
-
+  import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+  } from "../ui/dropdown-menu"
 
 export default function Navbar() {
   
@@ -22,7 +29,7 @@ export default function Navbar() {
   return (
     
 
-      <nav className="flex justify-between h-20 items-center bg-green-400 text-black px-24 py-3">
+      <nav className="flex justify-between h-28 items-center bg-green-400 text-black px-24 py-3">
       <Link href="/">
         <h1 className="text-4xl font-bold bg-transparent">Alquila tu cancha©</h1>
       </Link>
@@ -32,13 +39,14 @@ export default function Navbar() {
         {user ? (
   <div>
       
+      
     {
     user.picture
      ? (
-      <div className="flex">
-        <div className="mt-5">
-          <h2>{user.name}</h2>
-          <p>{user.email}</p>
+      <div className="m-5">
+
+        <div className="">
+          <h2>Bienvenido {user.name}!</h2>
         </div>
         <Avatar>
         <AvatarImage src={user.picture || ""} alt="@shadcn" />
@@ -51,6 +59,27 @@ export default function Navbar() {
           <img src={user.picture} className="rounded-2xl"/>
         </div>
   </div>
+        <div className="flex mt-4 ml-10 pl-10">
+          <div className="p-2 h-12 w-24 bg-white rounded-lg">
+          <DropdownMenu>
+            <DropdownMenuTrigger>Cuenta</DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel><Link href="/">Perfil</Link></DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem><Link href="/">Equipos</Link></DropdownMenuItem>
+              <DropdownMenuItem><Link href="/">Mensajes</Link></DropdownMenuItem>
+              <DropdownMenuItem ><Link href="api/auth/logout">Cerrar sesión</Link></DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+            {/* <Link href="api/auth/logout">Cerrar sesión</Link> */}
+          </div>
+            <Avatar className="w-10 h-10 mt-1 ml-5">
+                <AvatarImage src={user.picture || ""} alt="@shadcn" />
+                <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          </div>
+      </div>
+
 ) : (
   <p>No hay imagen de usuario disponible</p>
 )}
