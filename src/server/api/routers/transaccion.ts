@@ -10,7 +10,7 @@ export const transaccionRouter = createTRPCRouter({
   create: publicProcedure
     .input(
       z.object({
-        usuarioid: z.number(),
+        usuarioid: z.string(),
         canchaid: z.number(),
         deporteId: z.number(),
         descripcion: z.string(),
@@ -34,7 +34,7 @@ export const transaccionRouter = createTRPCRouter({
     .input(
       z.object({
         id: z.number(),
-        usuarioid: z.number(),
+        usuarioid: z.string(),
         canchaid: z.number(),
         deporteId: z.number(),
         descripcion: z.string(),

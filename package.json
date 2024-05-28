@@ -24,10 +24,10 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
     "@t3-oss/env-nextjs": "^0.10.1",
-    "@tanstack/react-query": "^5.32.0",
-    "@trpc/client": "next",
-    "@trpc/react-query": "11.0.0-rc.359",
-    "@trpc/server": "next",
+    "@tanstack/react-query": "^4.18.0",
+    "@trpc/client": "^10.45.2",
+    "@trpc/react-query": "10.45.2",
+    "@trpc/server": "^10.45.2",
     "auth0": "^4.4.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -66,5 +66,5 @@
   "ct3aMetadata": {
     "initVersion": "7.32.0"
   },
-  "packageManager": "pnpm@9.1.1"
+  "packageManager": "pnpm@9.1.2"
 }
