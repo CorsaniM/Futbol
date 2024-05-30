@@ -22,6 +22,10 @@ const config = {
                 source: '/registroalquiler',
                 destination: '/paginas/registroalquiler',
         },
+        {
+            source: '/transacciones',
+            destination: '/paginas/transacciones',
+    },
             // Añade más rutas aquí según lo necesites
         ];
     },
