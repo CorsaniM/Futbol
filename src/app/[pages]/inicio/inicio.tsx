@@ -18,7 +18,7 @@ export default function Inicio() {
                 <Link href="/alquiler" className="text-green-400">Alquilar una cancha</Link>
                 </div>
                 <div className="bg-slate-200 rounded-lg p-5 mt-10">
-                <Link href="/perfil" className="text-green-400">Alquilar una cancha</Link>
+                <Link href="/perfil" className="text-green-400">Ir al perfil</Link>
                 </div>
             </div>
             </main>
