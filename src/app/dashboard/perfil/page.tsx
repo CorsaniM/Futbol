@@ -7,7 +7,9 @@ export default function Home () {
         <div>
         <Title>Perfil</Title>
         <Sidebar>
-        <div></div>
+        <div>
+            
+        </div>
         </Sidebar>
         <div>
         <Title>Dashboard</Title>
