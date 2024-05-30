@@ -1,14 +1,15 @@
 import { List, ListTile } from "app/app/_components/ui/list";
 import { Title } from "app/app/_components/ui/title"
 import { Sidebar } from "lucide-react"
+import Link from "next/link";
 
 export default function Home () {
 
-    const items = [
-        { es: "canchas", en: "Canchas" },
-        { es: "ingresos", en: "Ingresos" },
-        { es: "dashboard", en: "Dashboard" },
-        { es: "mensajes", en: "Mensajes" },
+    const lista = [
+        { es: "/dashboard/perfil/canchas", en: "Canchas" },
+        { es: "/dashboard/perfil/ingresos", en: "Ingresos" },
+        { es: "/dashboard/perfil/dashboard", en: "Dashboard" },
+        { es: "/dashboard/perfil/mensajes", en: "Mensajes" },
     ];
     
 
@@ -16,9 +17,16 @@ export default function Home () {
     return(
         <div>
         <Title>Perfil</Title>
-        <Sidebar>
-
-        </Sidebar>
+        <div>
+            <List>
+                {lista.map(({es, en})=>(
+                    <Link href={
+                        es
+                    }>{en}</Link>
+                )
+            )}
+            </List>
+        </div>
         <div>
         <Title>Dashboard</Title>
         </div>
