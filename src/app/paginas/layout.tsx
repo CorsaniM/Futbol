@@ -26,7 +26,7 @@ export default function RootLayout({
       <UserProvider>
         <body className={`font-sans ${inter.variable}`}>
           <div className="sticky top-0 z-10">
-            <Navbar/>
+          <Navbar/>
           </div>
           <TRPCReactProvider>{children}</TRPCReactProvider>
         </body>

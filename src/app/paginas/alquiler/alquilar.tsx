@@ -18,13 +18,13 @@ import {
 
 import React from "react";
 import { Input } from "../../_components/ui/input";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { getServerAuthSession } from "app/server/auth";
+
 
 export default function Alquilar() {
 
-    const { mutateAsync: createPost, isLoading, error } = api.transaccion.create.useMutation()
 
-    const { user} = useUser();
+    const { mutateAsync: createPost, isLoading, error } = api.transaccion.create.useMutation()
 
     const refresh = api.useUtils().cancha.list.invalidate
 
@@ -91,8 +91,8 @@ export default function Alquilar() {
                 <div>
 
                 {!isLoading && 
-                <Button onClick={() => createPost({
-            usuarioid: user?.name || "",
+                <button onClick={() => createPost({
+            usuarioid: "w",
             canchaid: 1,
             deporteId: 1,
             descripcion: "todo gucci",
@@ -100,14 +100,16 @@ export default function Alquilar() {
             horario: new Date(),
             estado: 1,
 
-                }).then(refresh)}>Alquilar Cancha</Button>}
+                }).then(refresh)}>Alquilar Cancha</button>}
                 {isLoading && (
                     <Button disabled={true}>
                     <Loader2Icon className='mr-2 animate-spin' /> Creating post
                 </Button>
             )}
+                <Button>
+                    Alquilar
+                </Button>
             </div>
-
             </div>
         </div>
     </div>

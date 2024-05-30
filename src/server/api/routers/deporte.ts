@@ -2,12 +2,12 @@ import { eq } from "drizzle-orm";
 import { datetime } from "drizzle-orm/mysql-core";
 import { z } from "zod";
 
-import { createTRPCRouter, publicProcedure } from "app/server/api/trpc";
+import { createTRPCRouter, protectedProcedure } from "../trpc";
 import { db } from "app/server/db";
 import { deporte } from "app/server/db/schema";
 
 export const deporteRouter = createTRPCRouter({
-  create: publicProcedure
+  create: protectedProcedure
     .input(
       z.object({
         name: z.string(),
@@ -21,11 +21,12 @@ export const deporteRouter = createTRPCRouter({
       await ctx.db.insert(deporte).values(input);
     }),
 
-  list: publicProcedure.query(({ ctx }) => {
-    return ctx.db.query.deporte.findMany();
+  list: protectedProcedure.query( async({ }) => {
+    const deporte = await db.query.deporte.findMany();
+    return deporte;
   }),
 
-  update: publicProcedure
+  update: protectedProcedure
     .input(
       z.object({
         id: z.number(),
@@ -37,7 +38,7 @@ export const deporteRouter = createTRPCRouter({
       await db.update(deporte).set(input).where(eq(deporte.id, input.id));
     }),
 
-  get: publicProcedure
+  get: protectedProcedure
     .input(
       z.object({
         id: z.number(),
@@ -51,7 +52,7 @@ export const deporteRouter = createTRPCRouter({
       return channel;
     }),
 
-  delete: publicProcedure
+  delete: protectedProcedure
     .input(
       z.object({
         id: z.number(),
