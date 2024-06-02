@@ -1,6 +1,4 @@
-
-import Inicio from "./[pages]/inicio/inicio";
-import Navbar from "./_components/Navbar";
+import Inicio from "../[pages]/inicio/inicio";  
 
 
 
