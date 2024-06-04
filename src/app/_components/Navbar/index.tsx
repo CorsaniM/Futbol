@@ -22,7 +22,7 @@ export default function Navbar() {
   return (
     
 
-      <nav className="flex justify-between h-24 items-center bg-green-400 text-black px-24 py-3">
+      <nav className="flex justify-between h-22 items-center bg-orange-400 text-black px-18 py-5">
       <Link href="/">
         <h1 className="text-4xl font-bold bg-transparent">Alquila tu cancha©</h1>
       </Link>
@@ -42,7 +42,6 @@ export default function Navbar() {
         <div className="flex">
         <Avatar>
         <AvatarImage src={user.picture || ""} alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
      </Avatar>
         <div className="m-2 bg-slate-200 rounded-lg p-2 ">
           <Link href="api/auth/logout">Cerrar sesión</Link>

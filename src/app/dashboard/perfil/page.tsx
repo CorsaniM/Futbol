@@ -17,19 +17,7 @@ export default function Home () {
     return(
         <div>
         <Title>Perfil</Title>
-        <div>
-            <List>
-                {lista.map(({es, en})=>(
-                    <Link href={
-                        es
-                    }>{en}</Link>
-                )
-            )}
-            </List>
-        </div>
-        <div>
-        <Title>Dashboard</Title>
-        </div>
+
 
         </div>
 
