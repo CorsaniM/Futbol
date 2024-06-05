@@ -1,4 +1,4 @@
-import Inicio from "../[pages]/inicio/inicio";  
+import Inicio from "../[pages]/inicio/(v)inicio";  
 
 
 
