@@ -6,13 +6,12 @@ import Navbar from "./_components/Navbar";
 
 export default function Home() {
   return (
-    <div>
-      <div>
+    <header>
+      <div className="mt-10 text-3xl">
+          <h1>¡Bienvenido!</h1>
           <Inicio/>
-          <h1>HOLA</h1>
-          
       </div>
-    </div>
+    </header>
   );
 }
 

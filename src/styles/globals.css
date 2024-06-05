@@ -4,5 +4,6 @@
 
 
 body {
-    background: linear-gradient(150deg, #ffffff, #ffffff);
+    background: linear-gradient(150deg, #ffffff, #5eee3b);
+    text-align: center;
 }
