@@ -11,13 +11,12 @@ export default function Perfillayout({children, }:{children: React.ReactNode}) {
         { es: "/dashboard/perfil/dashboard", en: "Dashboard" },
         { es: "/dashboard/perfil/mensajes", en: "Mensajes" },
     ];
-    return ( <div className="flex">
-
-            <div className="w-1/5 h-screen p-8 block bg-gradient-to-t from-green-300 from-80% ">
+    return ( 
+    <div className="flex m-0">
+            <div className="w-1/5 min-w-40 h-screen bg-gradient-to-t from-green-300 from-80% ">
         <List>
-
             {lista.map(({es, en})=>(
-            <div className="block mt-5 hover:bg-green-200">
+            <div className="flex-auto p-3 hover:bg-green-200">
                 <Link href={es}>
                     <Title>{en}</Title>
                 </Link>
