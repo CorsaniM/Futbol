@@ -31,25 +31,28 @@ export default function Deportes() {
 
     return(
     <main>
-        <div className="flex columns-1 gap-8 h-screen">
-            <div className="flex items-center ml-50 w-screen row-span-1 bg-slate-200 rounded-lg max-w-fit h-36 mt-44 ">
-                <ul className="flex m-5">
-                    <li className="block m-5">
-                    <Title>Deportes</Title>
-                        <input  className="flex-auto border-black border rounded-lg" 
-                        value={name} onChange={(e) => setName(e.target.value)} placeholder='deporte'/>
-                    </li>
-                    <li className="block m-5">
-                        <Title>Tipo de deporte</Title>
-                        <input  className=" flex-auto border-black border rounded-lg" type="number" 
-                        value={tipo} onChange={(e) => setTipo(parseFloat(e.target.value))} placeholder='tipo'/>
-                    </li>
-                </ul> 
+        <div className="flex-col w-screen h-screen">
+            <div className="flex w-screen place-content-center mt-36 mb-2">
+                <div className="flex text-center bg-slate-200 rounded-lg max-w-fit">
+                    <ul className="flex m-5">
+                        <li className="block m-5">
+                        <Title>Deportes</Title>
+                            <input  className="flex-auto border-black border rounded-lg" 
+                            value={name} onChange={(e) => setName(e.target.value)} placeholder='deporte'/>
+                        </li>
+                        <li className="block m-5">
+                            <Title>Tipo de deporte</Title>
+                            <input  className=" flex-auto border-black border rounded-lg" type="number" 
+                            value={tipo} onChange={(e) => setTipo(parseFloat(e.target.value))} placeholder='tipo'/>
+                        </li>
+                    </ul> 
+                </div>
             </div>
 
-            <div className="w-screen col-span-1">
+            <div className="w-screen">
                 {!isLoading && 
-                <button className="m-4 rounded-full text-2xl p-3 bg-slate-200 hover:bg-slate-300" onClick={() => createPost({
+                <button className="m-4 rounded-full text-2xl p-3 bg-slate-200 hover:bg-slate-300" 
+                onClick={() => createPost({
                     name: name,
                     tipo: tipo,
                 }).then(refresh)}>Alquilar cancha</button>}
