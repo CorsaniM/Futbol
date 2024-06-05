@@ -1,4 +1,4 @@
-import Navbar from "app/app/_components/Navbar"
+
 
 export default function RegistroAlquiler () {
 
