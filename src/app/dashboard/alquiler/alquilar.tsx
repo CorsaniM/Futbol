@@ -38,44 +38,42 @@ export default function Alquilar() {
     return(
         <>
     <div className="flex w-screen h-screen">
-        <div >
-            <h1>Alquilar una cancha</h1>
-        </div>
-        <div className="h-screen">
-            <div className="flex bg-slate-200 rounded-lg max-w-fit h-44 items-center mt-44 ml-56 justify-center">
-                <ul className="flex ml-5">
-                    <li className="ml-5">
+        <div className="flex">
+            <div className="flex bg-slate-200 rounded-lg max-w-fit max-h-80
+            items-center mt-44 ml-56 justify-center">
+                <ul className="flex-col m-5 p-5">
+                    <li className="m-3">
                         <h1>Deporte</h1>
                         <input  className="border-black border rounded-lg" value={deporte} onChange={(e) => setDeporte(e.target.value)} placeholder='deporte' />
                     </li>
-                    <li className="ml-5">
+                    <li className="m-3">
                         <h1>Ubicacion(Localidad, calle)</h1>
                         <input  className="border-black border rounded-lg" value={Ubicacion} onChange={(e) => setUbicacion(e.target.value)} placeholder='localidad' />
                     </li>
-                    <li className="ml-5  mr-5">
+                    <li className="m-3">
                         <h1>Monto</h1>
                         <Input  className="border-black border rounded-lg" type="number" value={monto} onChange={(e) => setMonto(parseFloat(e.target.value))} placeholder='monto' />
                     </li>
-                    <li className="ml-5  mr-5">
+                    <li className="m-3">
                         <h1>Seña</h1>
                         <input  className="border-black border rounded-lg" value={seña} onChange={(e) => setSeña(e.target.value)} placeholder='seña' />
                     </li>
                 </ul>
-                    <li className="ml-5">
+                    <li className="m-0">
                     <Popover>
     <PopoverTrigger asChild>
         <Button
         variant={"outline"}
         className={cn(
-            "w-[240px] justify-start text-left font-normal",
+            "w-[240px] justify-start text-left font-bold",
             !horario && "text-muted-foreground"
         )}
         >
-        <CalendarIcon className="mr-2 h-4 w-4" />
+        <CalendarIcon className="mr-2 h-8 w-8" />
         {horario ? format(horario, "PPP") : <span>Ingrese la fecha</span>}
         </Button>
     </PopoverTrigger>
-    <PopoverContent className="w-auto p-0" align="start">
+    <PopoverContent className="w-auto bg-slate-200 border-green p-0" align="start">
         <Calendar
             mode="single"
             selected={horario}
@@ -85,9 +83,7 @@ export default function Alquilar() {
         </PopoverContent>
     </Popover>
                     </li>
-                <div>
-
-                {!isLoading && 
+                <div className="m-3"> {!isLoading && 
                 <button onClick={() => createPost({
             usuarioid: "",
             canchaid: 1,
