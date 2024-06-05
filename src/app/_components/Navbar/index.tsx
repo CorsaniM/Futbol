@@ -14,38 +14,40 @@ export default function Navbar() {
   
   const { user, error, isLoading } = useUser();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div className="flex h-36 p-5 ">Cargando...</div>;
   if (error) return <div>{error.message}</div>;
 
   return (
-  
-  <nav className="flex justify-between h-30 items-center bg-green-400 text-black px-20 py-2">
+
+  <nav className="flex justify-between h-36 items-center text-black font-medium px-20 py-2 bg-gradient-to-b from-green-400 from-80% ">
     <Link href="/">
-    <h1 className="text-4xl font-bold bg-none">Alquila tu cancha©</h1>
+    <h1 className="text-4xl font-bold p-2 hover:bg-green-300 ">Alquila tu cancha©</h1>
     </Link>
-    <ul className="flex gap-5 text-xl">
+    <ul className="flex gap-5 text-2xl">
       {user ? 
       (<div>
         { user.picture ? 
           (<div>
-            <div className="flex mt-5 mb-1">
-              <h2 className="text-center">{user.name}</h2>
-            </div>
-                
-            <div className="flex items-center gap-x-3">
-              <Avatar>
+            <div className="flex mt-4 items-center gap-x-3">
+              <Avatar className="size-12">
                 <AvatarImage src={user.picture || ""} alt="@shadcn" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
-              <div className="m-2 bg-slate-100 rounded-lg p-2 ">
+              <h2 className="text-center">{user.name}</h2>
+            </div>
+            
+            <div className="flex-auto mb-3">
+              <div className="m-2 rounded-full p-1 bg-slate-100 hover:bg-slate-200">
                 <Link href="api/auth/logout">Cerrar sesión</Link>
               </div>
             </div>
+                
+            
           </div>) : 
           (<p>No hay imagen de usuario disponible</p>
         )}
         </div>) : 
-        (<li className="mr-5 bg-white rounded-2xl p-2"> 
+        (<li className="m-2 rounded-lg p-2 bg-slate-100 hover:bg-slate-200"> 
           <Link href="/api/auth/login">
             Iniciar sesión
           </Link>

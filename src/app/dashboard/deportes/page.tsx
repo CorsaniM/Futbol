@@ -29,41 +29,37 @@ export default function Deportes() {
 
     const [tipo, setTipo] = useState<number>(0)
 
-    
-
-
-
     return(
-        <div>
-                <div>
-                <div className="h-screen">
-            <div className="flex bg-slate-200 rounded-lg max-w-fit h-44 items-center mt-44 ml-56 justify-center">
-                <ul className="flex ml-5">
-                    <li className="ml-5">
+    <main>
+        <div className="flex columns-1 gap-8 h-screen">
+            <div className="flex items-center ml-50 w-screen row-span-1 bg-slate-200 rounded-lg max-w-fit h-36 mt-44 ">
+                <ul className="flex m-5">
+                    <li className="block m-5">
                     <Title>Deportes</Title>
-                        <input  className="border-black border rounded-lg" value={name} onChange={(e) => setName(e.target.value)} placeholder='deporte' />
+                        <input  className="flex-auto border-black border rounded-lg" 
+                        value={name} onChange={(e) => setName(e.target.value)} placeholder='deporte'/>
                     </li>
-                    <li className="ml-5">
-                        <h1>Tipo de deporte</h1>
-                        <input  className="border-black border rounded-lg" type="number" value={tipo} onChange={(e) => setTipo(parseFloat(e.target.value))} placeholder='tipo' />
+                    <li className="block m-5">
+                        <Title>Tipo de deporte</Title>
+                        <input  className=" flex-auto border-black border rounded-lg" type="number" 
+                        value={tipo} onChange={(e) => setTipo(parseFloat(e.target.value))} placeholder='tipo'/>
                     </li>
                 </ul> 
-                </div>
-                <div>
+            </div>
+
+            <div className="w-screen col-span-1">
                 {!isLoading && 
-                <button onClick={() => createPost({
+                <button className="m-4 rounded-full text-2xl p-3 bg-slate-200 hover:bg-slate-300" onClick={() => createPost({
                     name: name,
                     tipo: tipo,
-                    
-                }).then(refresh)}>Alquilar Cancha</button>}
+                }).then(refresh)}>Alquilar cancha</button>}
                 {isLoading && (
                     <button disabled={true}>
-                    <Loader2Icon className='mr-2 animate-spin' /> Creating post
+                    <Loader2Icon className='mr-2 animate-spin'/> Creando
                 </button>
-            )}
-                </div>
-                </div>
-                </div>
+                )}
+            </div>
         </div>
+    </main>
     )
 }

@@ -13,11 +13,11 @@ export default function Perfillayout({children, }:{children: React.ReactNode}) {
     ];
     return ( <div className="flex">
 
-            <div className="w-1/4 h-screen block bg-slate-100 p-10">
+            <div className="w-1/5 h-screen p-8 block bg-gradient-to-t from-green-300 from-80% ">
         <List>
 
             {lista.map(({es, en})=>(
-            <div className="block mt-5 ">
+            <div className="block mt-5 hover:bg-green-200">
                 <Link href={es}>
                     <Title>{en}</Title>
                 </Link>
