@@ -43,12 +43,12 @@ export default function Inicio() {
                                 <li className="m-2">
                                     <h1 className="p-3">Deporte</h1>
                                     <input  className="border-black border rounded-lg" value={deporte} 
-                                    onChange={(e) => setDeporte(e.target.value)} placeholder='deporte' />
+                                    onChange={(e) => setDeporte(e.target.value)} placeholder=' deporte' />
                                 </li>
                                 <li className="m-3">
                                     <h1 className="p-3">Ubicacion(Localidad, calle)</h1>
                                     <input  className="border-black border rounded-lg" value={Ubicacion} 
-                                    onChange={(e) => setUbicacion(e.target.value)} placeholder='localidad' />
+                                    onChange={(e) => setUbicacion(e.target.value)} placeholder=' localidad' />
                                 </li>
                                 <li className="p-2">
                                     <Popover>
@@ -76,7 +76,8 @@ export default function Inicio() {
                                 </li>
                             </ul>
                             <div className="flex items-center mr-5 "> {!isLoading && 
-                            <button className= "h-24 w-36 rounded-full bg-slate-100 hover:bg-slate-300" onClick={() => createPost({
+                            <button className= "h-24 w-36 rounded-full bg-slate-100 hover:bg-slate-300" 
+                            onClick={() => createPost({
                                 usuarioid: "",
                                 canchaid: 1,
                                 deporteId: 1,
