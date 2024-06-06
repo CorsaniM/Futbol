@@ -5,7 +5,6 @@ import Link from "next/link";
 
 export default function Perfillayout({children, }:{children: React.ReactNode}) {
     const lista = [
-        
         { es: "/dashboard/perfil", en: "Perfil" },
         { es: "/dashboard/perfil/canchas", en: "Canchas" },
         { es: "/dashboard/perfil/ingresos", en: "Ingresos" },
@@ -14,11 +13,11 @@ export default function Perfillayout({children, }:{children: React.ReactNode}) {
     ];
     return ( <div className="flex">
 
-            <div className="w-1/4 h-screen block bg-slate-100 p-10">
+            <div className="h-screen gradient-to-t w-50 block bg-gradient-to-b p-8">
         <List>
 
             {lista.map(({es, en})=>(
-            <div className="block mt-5 ">
+            <div className="block mt-5 hover:bg-green-300 rounded-xl">
                 <Link href={es}>
                     <Title>{en}</Title>
                 </Link>

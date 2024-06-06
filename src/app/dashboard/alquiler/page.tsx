@@ -14,7 +14,7 @@ export default function Alquiler () {
 
     return(
         <div>
-            <h1>Que es lo que estas buscando?</h1>
+            <h1>Qué estás buscando?</h1>
             <div>
             <Alquilar/>
             </div>
