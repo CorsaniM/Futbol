@@ -1,5 +1,4 @@
 "use client"
-import Navbar from "app/app/_components/Navbar";
 import Link from "next/link";
 import { api } from "app/trpc/react";
 import { useState } from "react";
@@ -30,7 +29,7 @@ export default function Inicio() {
     <div className="flex-auto font-normal h-screen w-screen">
         <div className="flex-auto text-2xl text-left mt-20 ml-5 mb-16">
             <h1>¿Querés subir tu complejo deportivo?</h1>
-            <h2><Link href="/registroalquiler" className="text-green-600">Ingresa aca</Link></h2>
+            <h2><Link href="/dashboard/perfil/registroalquiler" className="text-green-600">Ingresa aca</Link></h2>
         </div>
         <div className="flex w-screen place-content-center">
             <div className="flex">
