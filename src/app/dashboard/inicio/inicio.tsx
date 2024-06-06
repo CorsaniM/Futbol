@@ -77,7 +77,7 @@ export default function Inicio() {
                                 </li>
                             </ul>
                             <div className="flex items-center mr-5 "> {!isLoading && 
-                            <button className= "h-24 w-40 rounded-full bg-slate-100 hover:bg-slate-300" onClick={() => createPost({
+                            <button className= "h-24 w-36 rounded-full bg-slate-100 hover:bg-slate-300" onClick={() => createPost({
                                 usuarioid: "",
                                 canchaid: 1,
                                 deporteId: 1,
@@ -85,7 +85,7 @@ export default function Inicio() {
                                 monto: monto,
                                 horario: new Date(),
                                 estado: 1,
-                            }).then(refresh)}>Alquilar Cancha</button>}
+                            }).then(refresh)}>Ir a alquilar</button>}
                             {isLoading && (
                             <Button disabled={true}>
                                 <Loader2Icon className=' m-2 animate-spin' /> Creating post

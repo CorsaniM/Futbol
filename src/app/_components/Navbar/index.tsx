@@ -19,7 +19,8 @@ export default function Navbar() {
 
   return (
 
-  <nav className="flex justify-between h-36 items-center text-black font-medium px-20 py-2 bg-gradient-to-b from-green-400 from-80% ">
+  <nav className="flex justify-between h-36 items-center text-black font-medium 
+  px-20 py-2 bg-gradient-to-b from-green-400 from-80% ">
     <Link href="/">
     <h1 className="text-4xl font-bold p-2 hover:bg-green-300 ">Alquila tu cancha©</h1>
     </Link>
@@ -27,27 +28,30 @@ export default function Navbar() {
       {user ? 
       (<div>
         { user.picture ? 
-          (<div>
-            <div className="flex mt-4 items-center gap-x-3">
-              <Avatar className="size-12">
-                <AvatarImage src={user.picture || ""} alt="@shadcn" />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
+          (<div className="flex-col">
+            <div className="flex mt-4 items-center gap-x-3" >
+              <Link href={"/dashboard/perfil"}>
+                <Avatar className="size-12" >
+                  <AvatarImage src={user.picture || ""} alt="@shadcn" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              </Link>
               <h2 className="text-center">{user.name}</h2>
             </div>
-            
-            <div className="flex-auto mb-3">
-              <div className="m-2 rounded-full p-1 bg-slate-100 hover:bg-slate-200">
+          <div className="flex justify-end">
+            <div className="flex">
+              <div className="text-xl my-2 w-40 place-self-end rounded-full bg-green-300 hover:bg-green-200">
                 <Link href="api/auth/logout">Cerrar sesión</Link>
               </div>
             </div>
+          </div>
                 
             
           </div>) : 
           (<p>No hay imagen de usuario disponible</p>
         )}
         </div>) : 
-        (<li className="m-2 rounded-lg p-2 bg-slate-100 hover:bg-slate-200"> 
+        (<li className="m-2 rounded-full p-3 bg-green-300 hover:bg-green-200"> 
           <Link href="/api/auth/login">
             Iniciar sesión
           </Link>
