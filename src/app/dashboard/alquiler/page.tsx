@@ -4,7 +4,7 @@ import Alquilar from "./alquilar";
 export default function Alquiler () {
 
     return(
-        <div className="mt-5 font-normal text-xl">
+        <div className="mt-5 w-100% font-normal text-xl">
             <Title>Elegí tu cancha</Title>
             <div>
             <Alquilar/>

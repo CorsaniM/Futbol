@@ -22,7 +22,7 @@ export default function Navbar() {
   <nav className="flex justify-between h-36 items-center text-black font-medium 
   px-20 py-2 bg-gradient-to-b from-green-400 from-80% ">
     <Link href="/">
-    <h1 className="text-4xl font-bold p-2 hover:bg-green-300 ">Alquila tu cancha©</h1>
+    <h1 className="text-4xl font-bold p-2">Alquila tu cancha©</h1>
     </Link>
     <ul className="flex gap-5 text-2xl">
       {user ? 

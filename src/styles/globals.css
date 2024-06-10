@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: contain;
+    background-attachment: fixed;
+
     background: linear-gradient(50deg, rgb(74, 222, 128), #ffffffe8);
     text-align: center;
 }

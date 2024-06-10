@@ -26,20 +26,20 @@ export default function Inicio() {
     const [monto, setMonto] = useState<number>(0)
 
     return(
-    <div className="flex-auto font-normal h-screen w-screen">
+    <div className="flex-auto font-normal">
         <div className="flex-auto text-2xl text-left mt-20 ml-5 mb-16">
             <h1>¿Querés subir tu complejo deportivo?</h1>
             <h2><Link href="/dashboard/perfil/registroalquiler" className="text-green-600">Ingresa aca</Link></h2>
         </div>
         <div className="flex w-screen place-content-center">
             <div className="flex">
-                <div className="flex bg-slate-200 rounded-lg">
-                    <div className="flex-col" >
-                        <div className="flex mb-0 m-5">
-                            <Title>Hacer una reserva</Title>
+                <div className="flex bg-slate-100 rounded-lg">
+                    <div className="flex-col">
+                        <div className="flex text-2xl font-medium mb-0 m-4">
+                            <h1>Hacer una reserva</h1>
                         </div>
-                        <div className="flex">
-                            <ul className="flex-col m-5 mt-0 text-2xl ">
+                        <div className="flex-row">
+                            <ul className="flex items-center m-5 mt-0 text-2xl ">
                                 <li className="m-2">
                                     <h1 className="p-3">Deporte</h1>
                                     <input  className="border-black border rounded-lg" value={deporte} 
@@ -64,7 +64,7 @@ export default function Inicio() {
                                                 {horario ? format(horario, "PPP") : <span>Ingrese la fecha</span>}
                                             </Button>
                                         </PopoverTrigger>
-                                        <PopoverContent className="w-auto bg-slate-200 border-green p-0" align="start">
+                                        <PopoverContent className="w-auto bg-slate-100 border-green p-0" align="start">
                                             <Calendar
                                                     mode="single"
                                                     selected={horario}
@@ -75,24 +75,10 @@ export default function Inicio() {
                                     </Popover>
                                 </li>
                             </ul>
-                            <div className="flex items-center mr-5 "> {!isLoading && 
-                            <button className= "h-24 w-36 rounded-full bg-slate-100 hover:bg-slate-300" 
-                            onClick={() => createPost({
-                                usuarioid: "",
-                                canchaid: 1,
-                                deporteId: 1,
-                                descripcion: "todo gucci",
-                                monto: monto,
-                                horario: new Date(),
-                                estado: 1,
-                            }).then(refresh)}>Ir a alquilar</button>}
-                            {isLoading && (
-                            <Button disabled={true}>
-                                <Loader2Icon className=' m-2 animate-spin' /> Creating post
-                            </Button>
-                            )}
-                            </div>
                         </div>
+                    </div>
+                    <div className="flex mr-5 items-center"> 
+                        <h2><Link href="/dashboard/alquiler" className="p-2 rounded-full bg-green-200 hover:bg-green-300">Ir a alquilar</Link></h2>
                     </div>
                 </div>
             </div>
