@@ -33,7 +33,7 @@ export default function Navbar() {
               <Link href={"/dashboard/perfil"}>
                 <Avatar className="size-12" >
                   <AvatarImage src={user.picture || ""} alt="@shadcn" />
-                  <AvatarFallback>CN</AvatarFallback>
+                  <AvatarFallback>CN</AvatarFallback>  
                 </Avatar>
               </Link>
               <h2 className="text-center">{user.name}</h2>
