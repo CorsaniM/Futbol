@@ -7,11 +7,11 @@ import { useState } from "react";
 
 export default function Perfillayout({children, }:{children: React.ReactNode}) {
     const lista = [
-        { i:0, es: "/dashboard/perfil", en: "Perfil" },
-        { i:1, es: "/dashboard/perfil/canchas", en: "Canchas" },
-        { i:2, es: "/dashboard/perfil/ingresos", en: "Ingresos" },
-        { i:3, es: "/dashboard/perfil/dashboard", en: "Dashboard" },
-        { i:4, es: "/dashboard/perfil/mensajes", en: "Mensajes" },
+        { es: "", en: "Perfil" },
+        { es: "/canchas", en: "Canchas" },
+        { es: "/ingresos", en: "Ingresos" },
+        { es: "/dashboard", en: "Dashboard" },
+        { es: "/mensajes", en: "Mensajes" },
     ];
     const [index, setIndex] = useState(-1)
     const handleClick = (i: number) => {
@@ -22,15 +22,15 @@ export default function Perfillayout({children, }:{children: React.ReactNode}) {
             <div className="w-1/5 min-w-40 h-screen 
             bg-gradient-to-t from-green-300 from-80% ">
         <List>
-            {lista.map(({i, es, en})=>(
-            <div 
-            onClick={()=> handleClick(i)}   
-            className={`flex-auto p-3 hover:bg-green-200 ${index==i? "bg-green-200":""}` }
-            >
-                <Link href={es}>
-                    <Title>{en}</Title>
-                </Link>
-            </div>
+            {lista.map(({es, en},ind)=>(
+                <div 
+                    onClick={()=> handleClick(ind)}   
+                    className={`flex-auto p-3 hover:bg-green-200 ${index==ind? "bg-green-200":""}`}
+                >
+                    <Link href={`/dashboard/perfil${es}`}>
+                        <Title>{en}</Title>
+                    </Link>
+                </div>
             )
         )}
         </List>
