@@ -7,8 +7,6 @@ export default function Home() {
     <div>
       <div>
           <Inicio/>
-          <h1>HOLA</h1>
-          
       </div>
     </div>
   );

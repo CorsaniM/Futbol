@@ -28,28 +28,28 @@ export default function Inicio() {
     const [horario, setHorario] = React.useState<Date>()
 
     return(
-    <div className="flex-row min-h-screen">
+    <div className="flex-col min-h-screen">
         <div className="flex-auto">
-            <div className=" mt-20 ml-5 align-content:left">
+            <div className=" mt-5 ml-5 align-content:left">
                 <h2>¿Queres subir tu complejo deportivo?</h2>
-                <h2><Link href="/registroalquiler" className="mt-10 ml-200 h-60 text-green-900"
+                <h2><Link href="/registroalquiler" className="mt-10 ml-300 h-60 text-green-900"
                 >Ingresá acá</Link></h2>
             </div>
 
         </div>
                  <div className="flex justify-center mt-9" >
-                     <div className="flex-row bg-slate-100 rounded-lg p-5">
-                        <ul className="flex-row ml-5">
+                     <div className="flex bg-slate-100 rounded-lg p-2">
+                        <ul className="flex ml-5">
                             
-                            <div className="mr-3 mb-2 text-center font-semibold">
+                            <div className="mr-5 mt-5 mb-2 text-center font-semibold">
                                 <h2>Hace tu reserva</h2>
                             </div>
-                            <li className="ml-0 mt-3">
+                            <li className="ml-2 mr-2 mb-2 mt-3">
                             <h1>Deporte</h1>
                                 <input  className="border-black border rounded-lg" value={deporte} 
                                 onChange={(e) => setDeporte(e.target.value)} placeholder=' deporte' />
                             </li>
-                            <li className="ml-0 mt-3">
+                            <li className="ml-2 mt-2 ml-2">
                                     <h1>Ubicación</h1>
                                 <input  className="border-black border rounded-lg" value={Ubicacion} 
                                  onChange={(e) => setUbicacion(e.target.value)} placeholder=' localidad' />
@@ -60,14 +60,14 @@ export default function Inicio() {
                                             <Button
                                                 variant={"outline"}
                                                 className={cn(
-                                                    "mt-5 mb-2 flex text-right font-normal",
+                                                    "mt-5 mr-5 ml-3 flex text-right font-normal",
                                                     !horario && "text-muted-foreground"
                                                     )} >
-                                                    <CalendarIcon className="mr-2 h-4 w-4 " />
+                                                    <CalendarIcon className="mr-5 h-4 w-4 "/>
                                                     {horario ? format(horario, "PPP") : <span>Ingrese la fecha</span>}
                                             </Button>
                                         </PopoverTrigger>
-                                        <PopoverContent className="w-auto p-0" align="start">
+                                        <PopoverContent className="w-auto p-0 bg-slate-100" align="start">
                                             <Calendar
                                             mode="single"
                                             selected={horario}
@@ -76,23 +76,9 @@ export default function Inicio() {
                                         </PopoverContent>
                                     </Popover>
                                 </li>
-                 <div>
-                 {!isLoading && 
-                    <button className=" mt-3 ml-8 p-2 hover: bg-green-200 rounded-2xl border" 
-                    align-start onClick={() => createPost({
-                        usuarioid: "",
-                        canchaid: 1,
-                        deporteId: 1,
-                        descripcion: "todo gucci",
-                        monto: monto,
-                        horario: new Date(),
-                        estado: 1,
-                    }).then(refresh)}>Alquilar cancha</button>}
-                {isLoading && (
-                    <Button disabled={true}>
-                    <Loader2Icon className='mt-6 animate-spin' /> Creating post
-                </Button>
-            )}
+                 <div className="flex mr-2 items-center">
+                    <h1><Link href="/dashboard/alquiler"
+                 className="p-2 bg-green-200 p-2 hover:bg-green-300 rounded-2xl border">Alquilar cancha</Link></h1>
             </div>
             </ul>
             </div>

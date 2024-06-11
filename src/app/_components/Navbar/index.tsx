@@ -42,7 +42,7 @@ export default function Navbar() {
           <h2>{user.name}</h2>
         </div>
         <div className="flex mt-2">
-        <Link href={"./dashboard/perfil"}>
+        <Link href={"/dashboard/perfil"}>
           <Avatar>
           <AvatarImage src={user.picture || ""} alt="@shadcn" />
           </Avatar>

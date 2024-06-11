@@ -4,16 +4,8 @@ import Link from "next/link";
 import Alquilar from "./alquilar";
 
 export default function Alquiler () {
-
-
-
-    
-        
-    
-
-
     return(
-        <div>
+        <div className="ml-5 mt-5 mb-2 font-semibold">
             <h1>Qué estás buscando?</h1>
             <div>
             <Alquilar/>
