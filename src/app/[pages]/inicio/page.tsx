@@ -42,21 +42,21 @@ export default function Inicio() {
                             <ul className="flex items-center m-5 mt-0 text-2xl ">
                                 <li className="m-2">
                                     <h1 className="p-3">Deporte</h1>
-                                    <input  className="border-black border rounded-lg" value={deporte} 
+                                    <input className="border-black border rounded-lg" value={deporte} 
                                     onChange={(e) => setDeporte(e.target.value)} placeholder=' deporte' />
                                 </li>
                                 <li className="m-3">
-                                    <h1 className="p-3">Ubicacion(Localidad, calle)</h1>
-                                    <input  className="border-black border rounded-lg" value={Ubicacion} 
+                                    <h1 className="p-3">Ubicación (Localidad, calle)</h1>
+                                    <input className="border-black border rounded-lg" value={Ubicacion} 
                                     onChange={(e) => setUbicacion(e.target.value)} placeholder=' localidad' />
                                 </li>
                                 <li className="p-2">
                                     <Popover>
                                         <PopoverTrigger asChild>
                                             <Button
-                                                variant={"outline"}
+                                                variant={"custom"}
                                                 className={cn(
-                                                    "w-[240px] justify-start text-left font-bold",
+                                                    "",
                                                     !horario && "text-muted-foreground"
                                                 )}
                                             >
@@ -64,7 +64,7 @@ export default function Inicio() {
                                                 {horario ? format(horario, "PPP") : <span>Ingrese la fecha</span>}
                                             </Button>
                                         </PopoverTrigger>
-                                        <PopoverContent className="w-auto bg-slate-100 border-green p-0" align="start">
+                                        <PopoverContent className=" w-16 bg-slate-100 border-green p-0" align="start">
                                             <Calendar
                                                     mode="single"
                                                     selected={horario}
@@ -78,7 +78,7 @@ export default function Inicio() {
                         </div>
                     </div>
                     <div className="flex mr-5 items-center"> 
-                        <h2><Link href="/dashboard/alquiler" className="p-2 rounded-full bg-green-200 hover:bg-green-300">Ir a alquilar</Link></h2>
+                        <Button variant={"custom"}><Link href="/dashboard/alquiler"></Link>Ir a alquilar</Button>
                     </div>
                 </div>
             </div>

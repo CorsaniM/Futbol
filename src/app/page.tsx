@@ -1,5 +1,5 @@
 
-import Inicio from "./dashboard/inicio/inicio";
+import Inicio from "./[pages]/inicio/page";
 import Navbar from "./_components/Navbar";
 
 

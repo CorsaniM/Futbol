@@ -13,7 +13,7 @@ export default function Perfillayout({children, }:{children: React.ReactNode}) {
         { es: "/dashboard", en: "Dashboard" },
         { es: "/mensajes", en: "Mensajes" },
     ];
-    const [index, setIndex] = useState(-1)
+    const [index, setIndex] = useState(0)
     const handleClick = (i: number) => {
         setIndex(i)
     };
