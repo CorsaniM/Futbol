@@ -78,7 +78,9 @@ export default function Inicio() {
                         </div>
                     </div>
                     <div className="flex mr-5 items-center"> 
-                        <Button variant={"custom"}><Link href="/dashboard/alquiler"></Link>Ir a alquilar</Button>
+                        <Button variant={"custom"}>
+                            <Link href="/dashboard/alquiler">Ir a alquilar</Link>
+                        </Button>
                     </div>
                 </div>
             </div>
