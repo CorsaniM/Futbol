@@ -25,7 +25,7 @@ export default function Perfillayout({children, }:{children: React.ReactNode}) {
             {lista.map(({es, en},ind)=>(
                 <div 
                     onClick={()=> handleClick(ind)}   
-                    className={`flex-auto p-3 hover:bg-green-200${index==ind?"bg-green-200":""}`}
+                    className={`flex-auto p-3 hover:bg-green-200 ${index==ind?"bg-green-200":""}`}
                 >
                     <Link href={`/dashboard/perfil${es}`}>
                         <Title>{en}</Title>

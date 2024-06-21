@@ -86,9 +86,9 @@ export default function Alquilar() {
                     </div>
                 </div>
                 <div className="grid grid-cols-4 m-5">
-                    <div className="flex m-2 h-80 w-80 bg-slate-100 rounded-lg justify-center">
+                    <span className="flex m-2 h-80 w-80 bg-slate-100 rounded-lg justify-center">
                         <h1 className="text-2xl">Cancha 1</h1>
-                    </div>
+                    </span>
                     <div className="flex m-2 h-80 w-80 bg-slate-100 rounded-lg justify-center">
                         <h1 className="text-2xl">Cancha 2</h1>
                     </div>

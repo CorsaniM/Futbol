@@ -21,8 +21,8 @@ export default function Inicio() {
     const { mutateAsync: createPost, isLoading, error } = api.transaccion.create.useMutation()
     const refresh = api.useUtils().cancha.list.invalidate
     const [deporte, setDeporte] = useState('')
-    const [Ubicacion, setUbicacion] = useState('')
     const [horario, setHorario] = React.useState<Date>()
+    const [Ubicacion, setUbicacion] = useState('')
     const [monto, setMonto] = useState<number>(0)
 
     return(
