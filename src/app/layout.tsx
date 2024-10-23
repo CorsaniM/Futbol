@@ -3,8 +3,9 @@ import "app/styles/globals.css";
 import { Inter } from "next/font/google";
 
 import { TRPCReactProvider } from "app/trpc/react";
+import AuthProviderSSR from "./_components/auth-provider/auth-provider-ssr";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import Navbar from "../_components/Navbar";
+import Navbar from "./_components/Navbar";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -22,12 +23,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-screen w-screen">
       <UserProvider>
         <body className={`font-sans ${inter.variable}`}>
-          <div className="sticky top-0 z-10">
           <Navbar/>
-          </div>
           <TRPCReactProvider>{children}</TRPCReactProvider>
         </body>
       </UserProvider>

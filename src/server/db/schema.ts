@@ -25,30 +25,25 @@ export const users = createTable(
     email: text("email", { length: 256 }).unique().notNull(),
     name: text("name", { length: 256 }),
     picture: text("picture"),
-    dueno: int("esDueno", { mode: "boolean" }).notNull().default(false),
-    ubicacionPreferida: text('ubicacionPreferida'),
+    dueno: int("dueno", { mode: "boolean" }).default(false),
   },
   (example) => ({
     emailIndex: index("user_email_idx").on(example.email),
   })
 );
 
-export const usuarioDueno = createTable(
-  "usuarioDueno",
+export const usuario = createTable(
+  "usuario",
   {
     id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
     email: text("email").unique(),
     name: text("name"),
-    razonSocial:text("razonSocial"),
     telefono: text("telefono"),
     documento: text("documento"),
     picture: text("picture"),
     contraseña: text("contraseña"),
     ubicacionPreferida: text('ubicacionPreferida'),
-    esDueno: int("esDueno", { mode: "boolean" }).notNull().default(false),
-    canchasId: int("canchasId").notNull(),
-    transaccionesId: int("canchasId").notNull(),
-
+    esDueno: text('esDueno')
   },
 );
 
@@ -58,21 +53,12 @@ export const cancha = createTable(
     id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
     razon_Social: text("razonSocial"),
     email: text("email"),
-    telefono: text("telefono"),
-    picture: text("picture"),
     domicilio: text("domicilio"),
     localidad: text("localidad"),
-    cp: text("localidad"),
-    reservasId: int("reservasId"),
-    horariosDisponible:int("horario", { mode: "timestamp" })
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull(),
-    horariosOcupados: int("horario", { mode: "timestamp" })
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull(),
     tamanos: text("tamanos"),
     Estado: int("Estado"),
-    duenoId: int("duenoId"),
+    telefono: text("telefono"),
+    picture: text("picture"),
   },
 );
 
@@ -81,12 +67,8 @@ export const transaccion = createTable(
   {
     id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
     usuarioid: text("usuarioId").notNull(),
-    canchaid: int("canchaId")
-    // .references(() => cancha.id)
-    .notNull(),
-    deporteId: int("deporteId")
-    // .references(() => deporte.id)
-    .notNull(),
+    canchaid: int("canchaId").references(() => cancha.id).notNull(),
+    deporteId: int("deporteId").references(() => deporte.id).notNull(),
     horario: int("horario", { mode: "timestamp" })
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
